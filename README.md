@@ -43,7 +43,12 @@ It is used to manage books, users, and book transactions.
 - Count books taken by each user
 - delete books
 - delete user
-- delete transaction.
+- delete transaction
+- check book availability before issuing
+- Decrease book quantity after issuing
+- Increase book quantity after returning
+- Prevent duplicate return updates
+- Track issue date and due date
 
 ## SQL Concepts Used
 
@@ -57,7 +62,16 @@ It is used to manage books, users, and book transactions.
 - WHERE
 - JOIN
 - GROUP BY
-- COUNT()
+- NOT NULL
+- UNIQUE 
+- AUTO_INCREMENT 
+- IS NOT NULL
+- IS NULL 
+- IN 
+- COMMIT
+- START TRANSACTION 
+- DATE-ADD
+- CURDATE
 
 ##   Project Flow
 
@@ -68,6 +82,8 @@ It is used to manage books, users, and book transactions.
 5. Track due dates.
 6. Update return dates.
 7. View book transactions.
+8. Check book availability.
+9. Increase book quantity after returning
 
 ##   Conclusion
 
