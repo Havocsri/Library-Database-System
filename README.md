@@ -40,13 +40,10 @@ It is used to manage books, users, and book transactions.
 - View all transactions.
 - View returned books.
 - View not returned books.
-- Count books taken by each user
-- delete books
-- delete user
-- delete transaction
-- check book availability before issuing
-- Decrease book quantity after issuing
-- Increase book quantity after returning
+- Check book availability before issuing.
+- Decrease book quantity after issuing.
+- Increase book quantity after returning.
+- Deactivate books and users when they have no open loans.
 - Prevent duplicate return updates
 - Track issue date and due date
 
@@ -61,19 +58,18 @@ It is used to manage books, users, and book transactions.
 - UPDATE
 - WHERE
 - JOIN
-- GROUP BY
 - NOT NULL
-- UNIQUE 
-- AUTO_INCREMENT 
+- UNIQUE
+- AUTO_INCREMENT
 - IS NOT NULL
-- IS NULL 
-- IN 
+- IS NULL
+- IN
 - COMMIT
-- START TRANSACTION 
-- DATE-ADD
+- START TRANSACTION
+- DATE_ADD
 - CURDATE
 
-##   Project Flow
+## Project Flow
 
 1. Create the database.
 2. Create the tables.
@@ -85,8 +81,25 @@ It is used to manage books, users, and book transactions.
 8. Check book availability.
 9. Increase book quantity after returning
 
-##   Conclusion
+## Conclusion
 
 This project helps to manage library records easily.
 
 It also helps to track issued and returned books.
+
+## Database Improvements
+
+- Checks book availability before issuing.
+- Updates book quantity and issue record in one transaction.
+- Shows whether each issue was successful.
+- Updates book quantity and return status together.
+- Shows whether each return was successful.
+- Constraints validate quantities and dates.
+- Foreign keys prevent deleting books or users with transaction records.
+- Trigger protects borrowing history from deletion.
+- Duplicate inserts do not overwrite existing details.
+- Numbered sections make the SQL script easy to read.
+
+Note: Run this script in a new database. It uses book and user IDs 1 to 5. If a table already exists, this script will not change it.
+
+Note: If a SQL error occurs, stop and run `ROLLBACK` manually. The script does not roll back automatically.
