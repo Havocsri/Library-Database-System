@@ -479,77 +479,77 @@ where
 -- run ROLLBACK. Review the return row counts before running COMMIT.
 start transaction;
 
-update books b
-join transactions t on t.book_id = b.book_id
+update books
+join transactions on transactions.book_id = books.book_id
 set
-    b.quantity = b.quantity + 1,
-    t.status = 'returned',
-    t.return_date = curdate()
+    books.quantity = books.quantity + 1,
+    transactions.status = 'returned',
+    transactions.return_date = curdate()
 where
-    t.transaction_id = @issue_id_4
-    and t.status in ('issued', 'overdue')
-    and t.return_date is null
-    and b.quantity < b.total_copies;
+    transactions.transaction_id = @issue_id_4
+    and transactions.status in ('issued', 'overdue')
+    and transactions.return_date is null
+    and books.quantity < books.total_copies;
 
 set @return_rows_4 = row_count();
 
-update books b
-join transactions t on t.book_id = b.book_id
+update books
+join transactions on transactions.book_id = books.book_id
 set
-    b.quantity = b.quantity + 1,
-    t.status = 'returned',
-    t.return_date = curdate()
+    books.quantity = books.quantity + 1,
+    transactions.status = 'returned',
+    transactions.return_date = curdate()
 where
-    t.transaction_id = @issue_id_2
-    and t.status in ('issued', 'overdue')
-    and t.return_date is null
-    and b.quantity < b.total_copies;
+    transactions.transaction_id = @issue_id_2
+    and transactions.status in ('issued', 'overdue')
+    and transactions.return_date is null
+    and books.quantity < books.total_copies;
 
 set @return_rows_2 = row_count();
 
-update books b
-join transactions t on t.book_id = b.book_id
+update books
+join transactions on transactions.book_id = books.book_id
 set
-    b.quantity = b.quantity + 1,
-    t.status = 'returned',
-    t.return_date = curdate()
+    books.quantity = books.quantity + 1,
+    transactions.status = 'returned',
+    transactions.return_date = curdate()
 where
-    t.transaction_id = @issue_id_1
-    and t.status in ('issued', 'overdue')
-    and t.return_date is null
-    and b.quantity < b.total_copies;
+    transactions.transaction_id = @issue_id_1
+    and transactions.status in ('issued', 'overdue')
+    and transactions.return_date is null
+    and books.quantity < books.total_copies;
 
 set @return_rows_1 = row_count();
 
-update books b
-join transactions t on t.book_id = b.book_id
+update books
+join transactions on transactions.book_id = books.book_id
 set
-    b.quantity = b.quantity + 1,
-    t.status = 'returned',
-    t.return_date = curdate()
+    books.quantity = books.quantity + 1,
+    transactions.status = 'returned',
+    transactions.return_date = curdate()
 where
-    t.transaction_id = @issue_id_5
-    and t.status in ('issued', 'overdue')
-    and t.return_date is null
-    and b.quantity < b.total_copies;
+    transactions.transaction_id = @issue_id_5
+    and transactions.status in ('issued', 'overdue')
+    and transactions.return_date is null
+    and books.quantity < books.total_copies;
 
 set @return_rows_5 = row_count();
 
-update books b
-join transactions t on t.book_id = b.book_id
+update books
+join transactions on transactions.book_id = books.book_id
 set
-    b.quantity = b.quantity + 1,
-    t.status = 'returned',
-    t.return_date = curdate()
+    books.quantity = books.quantity + 1,
+    transactions.status = 'returned',
+    transactions.return_date = curdate()
 where
-    t.transaction_id = @issue_id_3
-    and t.status in ('issued', 'overdue')
-    and t.return_date is null
-    and b.quantity < b.total_copies;
+    transactions.transaction_id = @issue_id_3
+    and transactions.status in ('issued', 'overdue')
+    and transactions.return_date is null
+    and books.quantity < books.total_copies;
 
 set @return_rows_3 = row_count();
 
--- A value of 1 means that return was processed; 0 means it was skipped.
+-- A value of 2 means that return was processed; 0 means it was skipped.
 select
     @return_rows_4 as return_4,
     @return_rows_2 as return_2,
